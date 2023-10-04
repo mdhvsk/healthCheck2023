@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800' rel='stylesheet'>
+<link rel="stylesheet" type="text/css"
+href="{{ url_for('static', filename='css/patient/dashboard/account.css')}}">
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>HealthCheck</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active align-items-center" >
+                    <img src="../../../static/imgs/dashboard.png" alt="dashboard">
+                    <a href="{{url_for('dashboardPage')}}">Dashboard</a>
+                </li>
+                <li class = "nav-item">
+                    <a href="{{url_for('appointmentsPage')}}">
+                        <img src="../../../static/imgs/calendar.png" alt="calendar">
+                        Appointments</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/meds.png" alt="meds">
+                    <a href="{{url_for('medicationsPage')}}">Medications</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/heart.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Vitals</a>
+                </li>
+            </ul>
+            <ul class = "list-unstyled components" id = "bottomNav">
+                <li>
+                    <img src="../../../static/imgs/notif.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Notifications</a>
+                </li>
+                <li aria-current="page" id = "currentPage">
+                    <img src="../../../static/imgs/user.png" alt="heart">
+                    <a href="{{url_for('accountPage')}}">{{first_name}}</a>
+                </li>
+                <li class = "nav-item">
+                    <form action='/logoutForm' method='post'>
+                        <img src="../../../static/imgs/logout.png" alt="heart">
+                        <button>Logout</button>
+                    </form>
+                </li>
+            </ul>
+
+        </nav>
+        <div id="dashboard">
+            <h3>Edit {{first_name}}'s Account</h3>
+            <div id="content">
+                <div id = "editAccountInfo">
+                    <form action="/editAccount" method = 'post'>
+                        <div class = "mb-3 ">
+                            <label for="title" class = "form-label">First Name: </label>
+                            <input type="text" name = "first_name" class="form-control" value = {{user.first_name}}> 
+                        </div>
+                        <div class = "mb-3 ">
+                            <label for="title" class = "form-label">Last Name: </label>
+                            <input type="text" name = "last_name" class="form-control" value = {{user.last_name}}> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" name = "dob">
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="number" class="form-control" name = "street_num" placeholder="Street #">
+                            <input type="text" class="form-control" name = "street" placeholder="Street Name">
+                            <input type="text" class="form-control" name = "city" placeholder="City">
+                            <input type="text" class="form-control" name = "state" placeholder="State">
+                            <input type="number" class="form-control" name = "zip_code" placeholder="zip_code">
+
+
+
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="frequency" class="form-label">Doctor</label>
+                            <select name="frequency" class = "form-select" aria-label="Default select example">
+                                <option value="noRepeat">Doctor</option>
+                                <option value="DAILY">dummy a</option>
+                                <option value="WEEKLY">dummy b</option>
+                                <option value="MONTHLY">dummy c</option>
+                                <option value="ANNUALLY">dummy d</option>
+                            </select>
+                        </div>
+                            <a class ="btn btn-danger" href="{{url_for('appointmentsPage')}}">Cancel</a>
+                            <button class = "btn btn-success">Submit</button>
+            
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

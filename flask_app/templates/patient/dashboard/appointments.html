@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" type="text/css" href = "{{ url_for('static', filename='css/patient/dashboard/appointments.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>HealthCheck</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active align-items-center" aria-current="page" >
+                    <img src="../../../static/imgs/dashboard.png" alt="dashboard">
+                    <a href="{{url_for('dashboardPage')}}">Dashboard</a>
+                </li>
+                <li class = "nav-item" id = "currentPage">
+                    <a href="{{url_for('appointmentsPage')}}">
+                        <img src="../../../static/imgs/calendar.png" alt="calendar">
+                        Appointments</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/meds.png" alt="meds">
+                    <a href="{{url_for('medicationsPage')}}">Medications</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/heart.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Vitals</a>
+                </li>
+            </ul>
+            <ul class = "list-unstyled components" id = "bottomNav">
+                <li>
+                    <img src="../../../static/imgs/notif.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Notifications</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/user.png" alt="heart">
+                    <a href="{{url_for('accountPage')}}">{{first_name}}</a>
+                </li>
+                <li class = "nav-item">
+                    <form action='/logoutForm' method='post'>
+                        <img src="../../../static/imgs/logout.png" alt="heart">
+                        <button>Logout</button>
+                    </form>
+                </li>
+            </ul>
+
+        </nav>
+        <div id="dashboard">
+            <h3>Appointments</h3>
+            <div id="content">
+                <div class = "box1">
+                    <h4>Upcoming Appointments</h4>
+                    <table>
+            
+                        <thead>
+                            <th>Title</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Description</th>
+                            <th>Delete</th>
+                        </thead>
+                        {% for appointment in appts %}
+                        <tr>
+                            <td>{{appointment.title}}</td>
+                            <td>{{appointment.start_time}}</td>
+                            <td>{{appointment.end_time}}</td>
+                            <td>{{appointment.description}}</td>
+                            <form action="deleteAppointment" method = 'post'>
+                                <input type="hidden" value = "{{appointment.id}}" name = "id">
+                                <td><input type="submit" value = Done></td>
+                            </form>
+                        
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+        <div class = "box2"><a href = "{{url_for('appointmentsAdd')}}">Add Appointment</a></div>
+        <div class = "box3">Sign in to google calendar</div>
+            </div>
+
+        </div>
+    </div>
+
+ 
+
+</body>
+</html>

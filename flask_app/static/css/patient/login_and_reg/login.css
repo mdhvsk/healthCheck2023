@@ -1,0 +1,29 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#loginNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #5800FF;
+    padding: 25px 50px;
+    text-align: left;
+    background-color: black;
+    background: rgba(0, 0, 0, 0.9);
+
+}
+
+a {
+    text-decoration: none;
+    border: 2px black;
+    background-color: #5800FF;
+    color: white;
+    border-radius: 5%;
+    padding: 10px 25px
+}
+

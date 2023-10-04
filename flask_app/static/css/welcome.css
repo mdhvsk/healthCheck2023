@@ -1,0 +1,63 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+
+
+
+}
+
+body {
+    text-align: center;
+    background-image: url("../imgs/doctors2.jpg");
+    background-position: 50%;
+    background-position: center;
+    background-size: contain;
+
+}
+
+#card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    height: 400px;
+    width: 400px;
+}
+
+
+h1 {
+    color: #5800FF;
+}
+
+#loginNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #5800FF;
+    padding: 25px 50px;
+    text-align: left;
+    background-color: black;
+    background: rgba(0, 0, 0, 0.9);
+
+}
+
+a {
+    text-decoration: none;
+    border: 2px black;
+    background-color: #5800FF;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5%;
+}
+
+
+p {
+    padding: 10px;
+}
+
+div>p {
+    font-size: 110%;
+}

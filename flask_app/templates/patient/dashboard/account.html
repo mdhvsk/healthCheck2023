@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800' rel='stylesheet'>
+<link rel="stylesheet" type="text/css"
+href="{{ url_for('static', filename='css/patient/dashboard/account.css')}}">
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>HealthCheck</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active align-items-center" >
+                    <img src="../../../static/imgs/dashboard.png" alt="dashboard">
+                    <a href="{{url_for('dashboardPage')}}">Dashboard</a>
+                </li>
+                <li class = "nav-item">
+                    <a href="{{url_for('appointmentsPage')}}">
+                        <img src="../../../static/imgs/calendar.png" alt="calendar">
+                        Appointments</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/meds.png" alt="meds">
+                    <a href="{{url_for('medicationsPage')}}">Medications</a>
+                </li>
+                <li>
+                    <img src="../../../static/imgs/heart.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Vitals</a>
+                </li>
+            </ul>
+            <ul class = "list-unstyled components" id = "bottomNav">
+                <li>
+                    <img src="../../../static/imgs/notif.png" alt="heart">
+                    <a href="{{url_for('vitalsPage')}}">Notifications</a>
+                </li>
+                <li aria-current="page" id = "currentPage">
+                    <img src="../../../static/imgs/user.png" alt="heart">
+                    <a href="{{url_for('accountPage')}}">{{first_name}}</a>
+                </li>
+                <li class = "nav-item">
+                    <form action='/logoutForm' method='post'>
+                        <img src="../../../static/imgs/logout.png" alt="heart">
+                        <button>Logout</button>
+                    </form>
+                </li>
+            </ul>
+
+        </nav>
+        <div id="dashboard">
+            <h3>{{first_name}}'s Account</h3>
+            <div id="content">
+                <div id = "accountInfo">
+                    <h6>Account Info</h6>
+                    <p>Name: {{user.first_name}} {{user.last_name}}</p>
+                    <p>Date of birth: {{user.dob}}</p>
+                    <p>Address: {{user.street}}</p>
+                    <a href="{{url_for('editAccountPage')}}">Edit Account</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
